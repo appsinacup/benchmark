@@ -58,7 +58,7 @@ func test_description() -> String:
 
 func add_ground(p_width:= 20, p_layers := [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]):
 	var surfaces: Array[StaticBody2D]= []
-	surfaces.append(PhysicsTest2D.get_static_body_with_collision_shape(Rect2(BOTTOM_LEFT - Vector2(0,p_width), Vector2(Global.WINDOW_SIZE.x, p_width)), TestCollisionShape.RECTANGLE, true))
+	surfaces.append(PhysicsTest2D.get_static_body_with_collision_shape(Rect2(Vector2(BOTTOM_LEFT.x - 1000, BOTTOM_LEFT.y - p_width), Vector2(Global.WINDOW_SIZE.x + 2000, p_width * 2)), TestCollisionShape.RECTANGLE, true))
 	
 	for wall in surfaces:
 		wall.collision_layer = 0

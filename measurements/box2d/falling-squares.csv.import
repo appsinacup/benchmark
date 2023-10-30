@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://p3d6x5tornyq"
+
+[deps]
+
+files=["res://measurements/box2d/falling-squares.0.translation", "res://measurements/box2d/falling-squares.0.translation"]
+
+source_file="res://measurements/box2d/falling-squares.csv"
+dest_files=["res://measurements/box2d/falling-squares.0.translation", "res://measurements/box2d/falling-squares.0.translation"]
+
+[params]
+
+compress=true
+delimiter=0
