@@ -1,0 +1,26 @@
+# Godot 4+ specific ignores
+.godot/
+# Ignore everything in bin folder by default
+addons/
+
+!bin/addons/godot-rapier2d/bin/libphysics_server_rapier2d.macos.template_debug.framework/Resources/Info.plist
+!bin/addons/godot-rapier2d/bin/libphysics_server_rapier2d.macos.template_release.framework/Resources/Info.plist
+
+# Binaries
+*.os
+*.dblite
+
+# Binaries
+*.os
+*.dblite
+*.pdb
+
+
+# System/tool-specific ignores
+.directory
+.DS_Store
+.vscode
+*~
+
+test.command
+test.app

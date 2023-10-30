@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cmhoth6eg6f6p"
+
+[deps]
+
+files=["res://measurements/godot-physics2d/falling-circles.0.translation", "res://measurements/godot-physics2d/falling-circles.0.translation"]
+
+source_file="res://measurements/godot-physics2d/falling-circles.csv"
+dest_files=["res://measurements/godot-physics2d/falling-circles.0.translation", "res://measurements/godot-physics2d/falling-circles.0.translation"]
+
+[params]
+
+compress=true
+delimiter=0
