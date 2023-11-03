@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="physics-test"
-run/main_scene="res://tests/nodes/RigidBody/tests/2d/maximum_rectangle.tscn"
+run/main_scene="res://tests/nodes/RigidBody/tests/2d/falling_rectangles.tscn"
 config/features=PackedStringArray("4.2")
 run/low_processor_mode_sleep_usec=1
 config/icon="res://icon.png"
@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 Global="*res://base/Global.gd"
 Pause="*res://base/pause.gd"
 Utils="*res://base/Utils.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
@@ -33,6 +34,10 @@ window/subwindows/embed_subwindows=false
 [editor]
 
 movie_writer/movie_file="/Users/dragosdaian/Documents/benchmark/vid/vid.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 
 [input]
 
@@ -57,8 +62,16 @@ zoom_out={
 ]
 }
 
+[physics]
+
+2d/physics_engine="Rapier2D"
+rapier_2d/solver/max_velocity_iterations=10
+rapier_2d/solver/max_velocity_friction_iterations=10
+rapier_2d/solver/max_stabilization_iterations=2
+
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 environment/ssao/quality=0

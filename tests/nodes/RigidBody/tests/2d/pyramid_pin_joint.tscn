@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://tnd4523ibauq"]
+
+[ext_resource type="Script" path="res://tests/nodes/RigidBody/tests/2d/pyramid_pin_joint.gd" id="1_mu8d0"]
+
+[node name="rectangle_pyramid" type="Node2D"]
+script = ExtResource("1_mu8d0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(709, -585)
+zoom = Vector2(0.3, 0.3)
