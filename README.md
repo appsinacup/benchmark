@@ -1,8 +1,12 @@
 # Physics Engines Benchmark Scenes
 
+## Requsites
+
+- Godot 4.x
+
 In order to run the tests, simply go to the scene of the test you want to run, run it and it will generate the data needed to create the graphs.
 
-If you want to change the physics engine, first you need to install a different one:
+If you want to change the physics engine, first you need to install a different one (addons can also be installed directly from Godot):
 - [Godot Box2D 2.4.x](https://godotengine.org/asset-library/asset/2007)
 - [Godot Rapier2D](https://godotengine.org/asset-library/asset/2267)
 
