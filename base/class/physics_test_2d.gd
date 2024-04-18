@@ -3,6 +3,7 @@ extends Node2D
 
 signal completed
 
+var next_scene = ""
 var CENTER := Global.WINDOW_SIZE/2
 var CENTER_LEFT := Vector2(0, CENTER.y)
 var CENTER_RIGHT := Vector2(Global.WINDOW_SIZE.x, CENTER.y)
@@ -32,7 +33,7 @@ enum TestCollisionShape {
 func _ready() -> void:
 	if get_tree().get_root() == get_parent(): # autostart is the scene is alone
 		Global.print_engine()
-		test_start()
+		next_scene = test_start()
 	var center_layout = CenterContainer.new()
 	center_layout.size = Vector2(Global.WINDOW_SIZE.x, 40)
 	var text_label = Label.new()
@@ -46,8 +47,8 @@ func test_name() -> String:
 	assert(false, "ERROR: You must give implement test_name()")
 	return ""
 
-func test_start() -> void:
-	pass
+func test_start() -> String:
+	return ""
 
 func test_completed() -> void:
 	Global.NB_TESTS_COMPLETED += 1

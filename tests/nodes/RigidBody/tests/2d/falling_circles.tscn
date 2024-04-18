@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://tests/nodes/RigidBody/tests/2d/maximum_rectangle.gd" id="1_i03m4"]
 
-[node name="maximum_rectangle" type="Node2D"]
+[node name="maximum_circles" type="Node2D"]
 script = ExtResource("1_i03m4")
+next_scene_name = "res://tests/nodes/RigidBody/tests/2d/falling_rectangles.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 320)

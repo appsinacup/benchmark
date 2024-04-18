@@ -10,7 +10,7 @@ func _ready() -> void:
 	if get_tree().get_root() == get_parent(): # autostart if the scene is executed alone
 		test_start()
 
-func test_start() -> void:
+func test_start() -> String:
 	start_time = Time.get_unix_time_from_system() 
 	runner = TestRunner.new(self, true)
 	runner.completed.connect(self.completed)

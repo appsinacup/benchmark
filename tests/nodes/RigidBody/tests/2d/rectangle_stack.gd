@@ -14,7 +14,7 @@ func test_description() -> String:
 func test_name() -> String:
 	return "RigidBody2D | testing the box stack stability"
 
-func test_start() -> void:
+func test_start() -> String:
 	add_collision_boundaries(20, false)
 
 	var stack = Node2D.new()
@@ -32,4 +32,5 @@ func test_start() -> void:
 		stack.add_child(body)
 	
 	add_child(stack)
+	return ""
 	

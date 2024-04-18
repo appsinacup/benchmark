@@ -20,9 +20,10 @@ var text: Dictionary:
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
-func test_start() -> void:
+func test_start() -> String:
 	process_mode = Node.PROCESS_MODE_INHERIT
 	started = true
+	return ""
 
 func is_test_passed() -> bool:
 	return success

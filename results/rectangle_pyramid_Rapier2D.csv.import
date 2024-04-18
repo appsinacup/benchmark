@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://brak22m0d6kc4"
+
+[deps]
+
+files=["res://results/rectangle_pyramid_Rapier2D.MS.translation"]
+
+source_file="res://results/rectangle_pyramid_Rapier2D.csv"
+dest_files=["res://results/rectangle_pyramid_Rapier2D.MS.translation"]
+
+[params]
+
+compress=true
+delimiter=0

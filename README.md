@@ -22,27 +22,4 @@ After installing, go to `Advanced Settings` -> `Physics` -> `2D`. Change Physics
 
 # Results
 
-After you have the csv files, view the results here:
-
-```vega-lite
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "results/maximum_rectangle.txt"},
-  "description": "Slope graph showing the change in yield for different barley sites. It shows the error in the year labels for the Morris site.",
-  "mark": "line",
-  "width": {"step": 50},
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "scale": {"padding": 0.5}
-    },
-    "y": {
-      "aggregate": "median",
-      "field": "yield",
-      "type": "quantitative"
-    },
-    "color": {"field": "site", "type": "nominal"}
-  }
-}
-```
+After you have the csv files in results folder.

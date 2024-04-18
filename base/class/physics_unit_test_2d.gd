@@ -8,6 +8,7 @@ var start_time := 0.0
 func _ready() -> void:
 	super()
 	start_time = Time.get_unix_time_from_system()
+	clear_file()
 
 func register_monitors(p_monitors: Array[Monitor], p_owner: Node, p_start:= true):
 	for monitor in p_monitors:
@@ -17,7 +18,7 @@ func register_monitors(p_monitors: Array[Monitor], p_owner: Node, p_start:= true
 		monitor.owner = p_owner
 		monitor.target = p_owner
 		if p_start:
-			monitor.test_start()
+			next_scene = monitor.test_start()
 
 func on_monitor_completed() -> void:
 	monitor_completed += 1
@@ -115,3 +116,28 @@ func create_generic_expiration_monitor(p_target: Node, p_test_lambda: Callable, 
 	register_monitors([instance as Monitor], p_target, p_auto_start)
 	instance.setup(p_test_lambda, p_physics_step_cbk, p_maximum_duration)
 	return instance
+
+func clear_file():
+	var scene_name = get_tree().get_current_scene().get_name()
+	var physics_engine = ProjectSettings.get("physics/2d/physics_engine")
+	var data_csv = FileAccess.open("res://results/"+scene_name+"_"+physics_engine+".csv", FileAccess.WRITE)
+	data_csv.store_line("OBJECT_COUNT,MS")
+	
+
+func write_line(line: String):
+	var scene_name = get_tree().get_current_scene().get_name()
+	var physics_engine = ProjectSettings.get("physics/2d/physics_engine")
+	var data_csv = FileAccess.open("res://results/"+scene_name+"_"+physics_engine+".csv", FileAccess.READ_WRITE)
+	data_csv.seek_end()
+	data_csv.store_line(line)
+	
+func _physics_process(delta):
+	write_line(str(Performance.get_monitor(Performance.PHYSICS_2D_ACTIVE_OBJECTS)) + \
+		"," + \
+		str(Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)))
+	var duration := Time.get_unix_time_from_system() - start_time
+	if duration > 15.0:
+		if next_scene != "":
+			get_tree().change_scene_to_file(next_scene)
+		else:
+			get_tree().quit()

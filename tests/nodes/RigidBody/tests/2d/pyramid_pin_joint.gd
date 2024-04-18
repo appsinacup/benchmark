@@ -3,8 +3,10 @@ extends PhysicsUnitTest2D
 @export var height := 40
 @export var box_size := Vector2(50.0, 50.0)
 @export var box_spacing :=  Vector2(50, 50)
-var simulation_duration := 10
+@export var is_pin_joint := true
+var simulation_duration := 5
 var size_boundary := 20
+@export var next_scene_name = ""
 
 var bodies := []
 var top_last_position := Vector2.ZERO
@@ -13,23 +15,30 @@ func test_description() -> String:
 	return """Checks the stability of the RigidBody Simulation. The pyramid should be stable and the RigidBody
 	should sleep after the [simulation_duration]
 	"""
-	
+
 func test_name() -> String:
 	return "Boxes Pyramid"
 
-func test_start() -> void:
+func test_start() -> String:
 	create_pyramid()
-
+	return next_scene_name
 
 func create_joint(node_a: PhysicsBody2D, node_b: PhysicsBody2D) -> Joint2D:
-	var joint = PinJoint2D.new();
-	#joint.damping = 1000
-	#joint.stiffness = 20
-	joint.softness = 0.7
-	joint.node_a = node_a.get_path()
-	joint.node_b = node_b.get_path()
-	joint.disable_collision = false
-	return joint
+	if is_pin_joint:
+		var joint = PinJoint2D.new();
+		joint.softness = 0.7
+		joint.node_a = node_a.get_path()
+		joint.node_b = node_b.get_path()
+		joint.disable_collision = false
+		return joint
+	else:
+		var joint = DampedSpringJoint2D.new();
+		joint.damping = 1000
+		joint.stiffness = 20
+		joint.node_a = node_a.get_path()
+		joint.node_b = node_b.get_path()
+		joint.disable_collision = false
+		return joint
 
 func create_pyramid():
 	var pos_y = -0.5 * box_size.y - box_spacing.y + Global.WINDOW_SIZE.y - size_boundary
