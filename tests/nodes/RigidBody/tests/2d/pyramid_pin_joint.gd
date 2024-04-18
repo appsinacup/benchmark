@@ -1,6 +1,6 @@
 extends PhysicsUnitTest2D
 
-@export var height := 5
+@export var height := 40
 @export var box_size := Vector2(50.0, 50.0)
 @export var box_spacing :=  Vector2(50, 50)
 var simulation_duration := 10

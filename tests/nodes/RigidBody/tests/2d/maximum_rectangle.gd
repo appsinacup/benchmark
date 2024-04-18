@@ -16,7 +16,7 @@ func test_name() -> String:
 	return "Falling " + shape_name(type)
 
 func test_start() -> void:
-	add_collision_boundaries(20, false)
+	add_collision_boundaries_extend(20, false, 2)
 
 	timer = Timer.new()
 	timer.wait_time = interval
@@ -26,10 +26,13 @@ func test_start() -> void:
 	timer.start()
 
 func write_line(line: String):
-	var data_csv = FileAccess.open("user://data.csv", FileAccess.READ_WRITE)
+	print(line)
+	var scene_name = get_tree().get_current_scene().get_name()
+	print(scene_name)
+	var data_csv = FileAccess.open("res://results/"+scene_name+".txt", FileAccess.READ_WRITE)
+	print(FileAccess.get_open_error())
 	data_csv.seek_end()
 	data_csv.store_line(line)
-	print(line)
 
 var count = 0
 
@@ -52,7 +55,7 @@ func spawn_body() -> void:
 	
 func _get_rigid_body(p_position: Vector2) -> RigidBody2D:
 	var body = RigidBody2D.new()
-	var shape = PhysicsTest2D.get_default_collision_shape(type, 0.45)
+	var shape = PhysicsTest2D.get_default_collision_shape(type, 1)
 	body.add_child(shape)
 	body.position = p_position
 	return body
