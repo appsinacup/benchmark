@@ -1,9 +1,10 @@
 extends PhysicsUnitTest2D
 
-@export var height := 40
+@export var next_scene_name = ""
+@export var height := 50
 @export var box_size := Vector2(50.0, 50.0)
 @export var box_spacing :=  Vector2(0.002, 0.002)
-var simulation_duration := 10
+var simulation_duration := 280
 var size_boundary := 20
 
 var bodies := []
@@ -17,7 +18,7 @@ func test_description() -> String:
 func test_name() -> String:
 	return "Boxes Pyramid"
 
-func test_start() -> void:
+func test_start() -> String:
 	add_ground(size_boundary)
 	create_pyramid()
 
@@ -38,7 +39,8 @@ func test_start() -> void:
 	
 	var pyramid_top_cube := create_generic_expiration_monitor(self, test_head_position, null, simulation_duration)
 	pyramid_top_cube.test_name = "The top cube did not move"
-	
+	return next_scene_name
+
 func create_pyramid():
 	var pos_y = -0.5 * box_size.y - box_spacing.y + Global.WINDOW_SIZE.y - size_boundary
 	var pos_x
@@ -60,6 +62,7 @@ func create_pyramid():
 			var box = get_rigid_body()
 			box.position = Vector2(pos_x, 0.0)
 			box.name = "Box%02d" % (box_index + 1)
+			box.mass = 100
 			row_node.add_child(box)
 			count += 1
 

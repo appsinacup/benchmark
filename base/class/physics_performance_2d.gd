@@ -72,7 +72,7 @@ func get_smoothed_fps():
 func get_fps():
 	return _current_fps
 
-func test_start() -> void:
+func test_start() -> String:
 	super()
 	
 	_fps_label = Label.new()
@@ -81,6 +81,7 @@ func test_start() -> void:
 	add_child(_fps_label)
 	
 	process_mode = Node.PROCESS_MODE_INHERIT
+	return ""
 
 func register_result(p_name: String, result: String):
 	if not Global.PERFORMANCE_RESULT.has(get_name()):

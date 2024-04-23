@@ -19,3 +19,7 @@ After installing, go to `Advanced Settings` -> `Physics` -> `2D`. Change Physics
 - tests/nodes/RigidBody/tests/2d/pyramid_pin_joint.tscn
 - tests/nodes/RigidBody/tests/2d/rectangle_pyramid.tscn
 - tests/nodes/RigidBody/tests/2d/rectangle_stack.tscn
+
+# Results
+
+After you have the csv files in results folder.

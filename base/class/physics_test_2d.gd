@@ -3,6 +3,7 @@ extends Node2D
 
 signal completed
 
+var next_scene = ""
 var CENTER := Global.WINDOW_SIZE/2
 var CENTER_LEFT := Vector2(0, CENTER.y)
 var CENTER_RIGHT := Vector2(Global.WINDOW_SIZE.x, CENTER.y)
@@ -32,7 +33,7 @@ enum TestCollisionShape {
 func _ready() -> void:
 	if get_tree().get_root() == get_parent(): # autostart is the scene is alone
 		Global.print_engine()
-		test_start()
+		next_scene = test_start()
 	var center_layout = CenterContainer.new()
 	center_layout.size = Vector2(Global.WINDOW_SIZE.x, 40)
 	var text_label = Label.new()
@@ -46,8 +47,8 @@ func test_name() -> String:
 	assert(false, "ERROR: You must give implement test_name()")
 	return ""
 
-func test_start() -> void:
-	pass
+func test_start() -> String:
+	return ""
 
 func test_completed() -> void:
 	Global.NB_TESTS_COMPLETED += 1
@@ -83,6 +84,25 @@ func add_collision_boundaries(p_width:= 20, p_add_ceiling := true,  p_layers := 
 		wall.collision_layer = 0
 		wall.collision_mask = 0
 		for layer in p_layers:
+			wall.set_collision_layer_value(layer, true)
+			wall.set_collision_mask_value(layer, true)
+		add_child(wall)
+
+func add_collision_boundaries_extend(p_width:= 20, p_add_ceiling := true, p_extend := 1):
+	var surfaces: Array[StaticBody2D]= []
+	# Left wall
+	surfaces.append(PhysicsTest2D.get_static_body_with_collision_shape(Rect2(TOP_LEFT * p_extend, Vector2(p_width, Global.WINDOW_SIZE.y)* p_extend), TestCollisionShape.RECTANGLE, true))
+	# Right wall
+	surfaces.append(PhysicsTest2D.get_static_body_with_collision_shape(Rect2(TOP_RIGHT* p_extend - Vector2(p_width,0)* p_extend, Vector2(p_width, Global.WINDOW_SIZE.y) * p_extend), TestCollisionShape.RECTANGLE, true))
+	# Bottom Wall
+	surfaces.append(PhysicsTest2D.get_static_body_with_collision_shape(Rect2(BOTTOM_LEFT* p_extend - Vector2(0,p_width)* p_extend, Vector2(Global.WINDOW_SIZE.x, p_width) * p_extend), TestCollisionShape.RECTANGLE, true))
+	if p_add_ceiling:
+		surfaces.append(PhysicsTest2D.get_static_body_with_collision_shape(Rect2(TOP_LEFT* p_extend, Vector2(Global.WINDOW_SIZE.x, p_width)* p_extend), TestCollisionShape.RECTANGLE, true))
+	
+	for wall in surfaces:
+		wall.collision_layer = 0
+		wall.collision_mask = 0
+		for layer in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
 			wall.set_collision_layer_value(layer, true)
 			wall.set_collision_mask_value(layer, true)
 		add_child(wall)

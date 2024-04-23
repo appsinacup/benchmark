@@ -21,7 +21,6 @@ config/icon="res://icon.png"
 Global="*res://base/Global.gd"
 Pause="*res://base/pause.gd"
 Utils="*res://base/Utils.gd"
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
@@ -37,7 +36,7 @@ movie_writer/movie_file="/Users/dragosdaian/Documents/benchmark/vid/vid.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
@@ -65,9 +64,6 @@ zoom_out={
 [physics]
 
 2d/physics_engine="Rapier2D"
-rapier_2d/solver/max_velocity_iterations=10
-rapier_2d/solver/max_velocity_friction_iterations=10
-rapier_2d/solver/max_stabilization_iterations=2
 
 [rendering]
 
