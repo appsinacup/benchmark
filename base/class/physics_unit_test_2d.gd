@@ -120,6 +120,7 @@ func create_generic_expiration_monitor(p_target: Node, p_test_lambda: Callable, 
 func clear_file():
 	var scene_name = get_tree().get_current_scene().get_name()
 	var physics_engine = ProjectSettings.get("physics/2d/physics_engine")
+	DirAccess.make_dir_absolute("res://results")
 	var data_csv = FileAccess.open("res://results/"+scene_name+"_"+physics_engine+".csv", FileAccess.WRITE)
 	data_csv.store_line("OBJECT_COUNT,MS")
 	
