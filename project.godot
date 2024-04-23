@@ -64,9 +64,6 @@ zoom_out={
 [physics]
 
 2d/physics_engine="Rapier2D"
-rapier_2d/solver/max_velocity_iterations=10
-rapier_2d/solver/max_velocity_friction_iterations=10
-rapier_2d/solver/max_stabilization_iterations=2
 
 [rendering]
 

@@ -24,3 +24,6 @@ addons/
 
 test.command
 test.app
+
+results/
+samples/
